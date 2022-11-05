@@ -2,6 +2,10 @@ import AppError from '../../core/utils/appError';
 import logger from '../../core/utils/logger';
 import httpStatus from 'http-status';
 import { IImage } from './image.interface';
+import { createClient } from 'pexels';
+import config from '../../config/config';
+
+const client = createClient(config.pexelsApiKey);
 
 let imageStorage: Array<IImage> = [];
 
@@ -18,7 +22,9 @@ const getOne = (id: string): IImage => {
   return imageStorage[0];
 };
 
-const getMultiple = (): IImage[] => {
+const getMultiple = async(userLimit):Promise<IImage[]> => {
+  const limit = userLimit > 0 && userLimit < 11 ? userLimit : 5;
+  const res = await client.photos.search({query:'',per_page:limit})
   logger.debug(`Image found.`);
   return imageStorage;
 };
