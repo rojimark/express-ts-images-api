@@ -23,4 +23,11 @@ const getImage = (req: Request, res: Response) => {
   res.send({ message: 'Image Found!' });
 };
 
+const getImages = (req: Request, res:Response) => {
+  const {userLimit} = req?.params || 5;
+  getMultiple(userLimit);
+  res.status(httpStatus.OK);
+  res.send({ message: 'Image Found!' });
+}
+
 export { createImage, getOne, getMultiple, deleteOne, modify };

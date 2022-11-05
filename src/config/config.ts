@@ -16,7 +16,8 @@ const envsSchema = Joi.object()
       .default('development'),
     PORT: Joi.number().default(8080),
     API_KEY_TOKEN: Joi.string().default('token'),
-    JWT_SECRET: Joi.string()
+    JWT_SECRET: Joi.string(),
+    PEXELS_API_KEY: Joi.string()
   })
   .unknown(true);
 
@@ -35,5 +36,6 @@ export default {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   xApiKey: envVars.API_KEY_TOKEN,
-  jwtSecret: envVars.JWT_SECRET
+  jwtSecret: envVars.JWT_SECRET,
+  pexelsApiKey: envVars.PEXELS_API_KEY
 };

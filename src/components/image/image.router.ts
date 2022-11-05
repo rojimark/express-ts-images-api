@@ -10,13 +10,13 @@ const router: Router = Router();
 // e.g. createUser request's body is validated and protected by api-key
 router
 .get(
-  '/images/:id',
+  '/image/:id',
   [protectedByApiKey],
   getOne
 )
 .get(
-  '/images/',
-  [protectedByApiKey],
+  '/images/:id',
+  // [protectedByApiKey],
   getMultiple
 )
 .post(
